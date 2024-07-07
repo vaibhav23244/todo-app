@@ -10,24 +10,17 @@ const noteRouter = require("./routes/noteRoute");
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use("/user", userRouter);
-app.use("/note", noteRouter);
-
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
+app.use("/user", userRouter);
+app.use("/note", noteRouter);
 
-// Connect to MongoDB
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
-// Remove the app.listen call for Vercel deployment
-// Instead, export the Express app
-module.exports = app;
-
-// For local development, you can use this:
 if (process.env.NODE_ENV !== "production") {
   const PORT = process.env.PORT || 3000;
   app.listen(PORT, () => {
