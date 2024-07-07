@@ -13,6 +13,10 @@ app.use(cors());
 app.use("/user", userRouter);
 app.use("/note", noteRouter);
 
+app.get("/", (req, res, next) => {
+  res.send("Hello World");
+});
+
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => {
