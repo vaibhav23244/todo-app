@@ -61,7 +61,7 @@ const AuthLogic = () => {
       setIsLoading(true);
       if (isSignUp) {
         // Sign up
-        const response = await axios.post("https://todo-app-backend-tkcy.onrender.com/user/signup", {
+        const response = await axios.post("https://nodejs-backend-express-bice.vercel.app/user/signup", {
           name: values.name,
           email: values.email,
           password: values.password,
@@ -80,7 +80,7 @@ const AuthLogic = () => {
         }
       } else {
         // Login
-        const response = await axios.post("https://todo-app-backend-tkcy.onrender.com/user/login", {
+        const response = await axios.post("https://nodejs-backend-express-bice.vercel.app/user/login", {
           email: values.email,
           password: values.password,
         });
