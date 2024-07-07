@@ -5,7 +5,8 @@ import { Input } from "@/components/ui/input";
 import { useNoteContext } from "@/context/notesContext";
 
 const Items = () => {
-  const { notes, getNotes, updateNote, deleteNote } = useNoteContext();
+  const { notes, getNotes, updateNote, deleteNote, isLoading } =
+    useNoteContext();
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editValue, setEditValue] = useState("");
 
@@ -69,6 +70,7 @@ const Items = () => {
                   {editingId === item._id ? (
                     <>
                       <Button
+                        disabled={isLoading}
                         variant="link"
                         className="tracking-tight text-sm hover:text-red-500"
                         onClick={() => setEditingId(null)}
@@ -76,6 +78,7 @@ const Items = () => {
                         Cancel
                       </Button>
                       <Button
+                        disabled={isLoading}
                         variant="link"
                         className="tracking-tight text-sm hover:text-green-500"
                         onClick={() => handleUpdate(item._id)}
@@ -85,6 +88,7 @@ const Items = () => {
                     </>
                   ) : (
                     <Button
+                      disabled={isLoading}
                       variant="link"
                       className="tracking-tight text-sm hover:text-violet-500"
                       onClick={() => handleEdit(item._id, item.todo)}
@@ -93,6 +97,7 @@ const Items = () => {
                     </Button>
                   )}
                   <Button
+                    disabled={isLoading}
                     variant="link"
                     className="tracking-tight text-sm hover:text-violet-500"
                     onClick={() => handleDelete(item._id)}

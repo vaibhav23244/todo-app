@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useNoteContext } from "@/context/notesContext";
+import { ReloadIcon } from "@radix-ui/react-icons";
 
 const formSchema = z.object({
   name: z
@@ -24,7 +25,7 @@ const formSchema = z.object({
 });
 
 const ToDoForm = () => {
-  const { createNote } = useNoteContext();
+  const { createNote, isLoading } = useNoteContext();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -65,12 +66,23 @@ const ToDoForm = () => {
               </FormItem>
             )}
           />
-          <Button
-            type="submit"
-            className="bg-black text-white text-[17px] hover:bg-violet-500"
-          >
-            Create &rarr;
-          </Button>
+          {isLoading ? (
+            <Button
+              disabled
+              className="bg-black text-white text-[17px]"
+              type="submit"
+            >
+              <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
+              Please wait
+            </Button>
+          ) : (
+            <Button
+              type="submit"
+              className="bg-black text-white text-[17px] hover:bg-violet-500"
+            >
+              Create &rarr;
+            </Button>
+          )}
         </form>
       </Form>
     </div>
