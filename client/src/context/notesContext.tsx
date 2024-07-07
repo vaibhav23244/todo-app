@@ -29,7 +29,7 @@ export const NoteProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [notes, setNotes] = useState<Note[]>([]);
 
-  const API_BASE_URL = "http://localhost:5000/note";
+  const API_BASE_URL = "https://todo-app-backend-tkcy.onrender.com/note";
 
   const getAuthHeaders = () => {
     const user = localStorage.getItem("user");
