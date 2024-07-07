@@ -20,7 +20,7 @@ app.get("/", (req, res, next) => {
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => {
-    app.listen(process.env.PORT);
+    app.listen(process.env.PORT || 3000);
   })
   .catch((err) => {
     console.log(err);
