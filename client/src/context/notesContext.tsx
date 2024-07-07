@@ -31,7 +31,7 @@ export const NoteProvider: React.FC<{ children: React.ReactNode }> = ({
   const [notes, setNotes] = useState<Note[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const API_BASE_URL = "https://todo-app-backend-tkcy.onrender.com/note";
+  const API_BASE_URL = "https://nodejs-backend-express-bice.vercel.app/note";
 
   const getAuthHeaders = () => {
     const user = localStorage.getItem("user");
