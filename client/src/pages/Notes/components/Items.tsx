@@ -116,6 +116,7 @@ const Items = () => {
           <h3 className="tracking-tight text-2xl font-semibold">
             Try creating your first note &uarr;
           </h3>
+          <img src="/assets/empty.svg" alt="logo" width={435} />
         </div>
       )}
     </ScrollArea>
